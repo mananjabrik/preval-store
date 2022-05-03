@@ -1,9 +1,9 @@
-import type { NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import styles from '../styles/Home.module.css'
+import Head from 'next/head';
+import Image from 'next/image';
+import DATA from '../preval/my-data.preval';
+import styles from '../styles/Home.module.css';
 
-const Home: NextPage = () => {
+export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
@@ -16,10 +16,18 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js!</a>
         </h1>
-
+        <div>
+          {DATA.map((item: any) => {
+            return (
+              <p key={item.id}>
+                No : {item.id} title: {item.title}
+              </p>
+            );
+          })}
+        </div>
         <p className={styles.description}>
           Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
+          <code className={styles.code}>pages/index.js</code>
         </p>
 
         <div className={styles.grid}>
@@ -34,7 +42,7 @@ const Home: NextPage = () => {
           </a>
 
           <a
-            href="https://github.com/vercel/next.js/tree/canary/examples"
+            href="https://github.com/vercel/next.js/tree/master/examples"
             className={styles.card}
           >
             <h2>Examples &rarr;</h2>
@@ -66,7 +74,5 @@ const Home: NextPage = () => {
         </a>
       </footer>
     </div>
-  )
+  );
 }
-
-export default Home
